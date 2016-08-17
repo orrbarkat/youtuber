@@ -1,0 +1,25 @@
+{
+  "name": "youtuber",
+  "version": "1.0.0",
+  "description": "youtube artist banning",
+  "main": "js/scripts.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orrbarkat/youtuber.git"
+  },
+  "keywords": [
+    "youtuber"
+  ],
+  "author": "Orr Barkat",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/orrbarkat/youtuber/issues"
+  },
+  "homepage": "https://github.com/orrbarkat/youtuber#readme",
+  "dependencies": {
+    "webpack": "^1.13.1"
+  }
+}
