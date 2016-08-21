@@ -1,0 +1,11 @@
+
+
+  getArtists(){
+      chrome.storage.sync.get("artists", function(data, list){
+        let list = JSON.parse(data.artists).map( (title,i) => title);
+        this.setState({artists: list});
+      }.bind(this));
+  },
+  componentDidMount: function() {
+      this.getArtists();
+    },
