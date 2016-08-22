@@ -6,12 +6,16 @@ import Welcome from './welcome.js';
 
 class Home extends React.Component {
   render() {
-    return <div>
+    const containerStyle = {
+      width: "250px"
+    };
+    return(
+    <div className="container" style={containerStyle}>
       <Welcome/>
       <br/>
       <Banned/>
     </div>
-
+  )
   }
 }
 const app = document.getElementById('app');

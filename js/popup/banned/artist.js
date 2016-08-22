@@ -9,17 +9,18 @@ export default class Artist extends React.Component {
   render() {
     const { title } = this.props;
     const artStyle = {
-      width: "5px",
-      hight: "5px"
+      text:{
+        justifyContent: "left"
+      },
+      glyph:{
+        float: "right"
+      }
     };
 
     return (
-      <div width="70px">
-        <h4>{title}</h4>
-        <button class="btn btn-default" onClick={this.handleClick.bind(this)} >
-          <img src="x.png" style={artStyle} />
+        <button className="list-group-item" onClick={this.handleClick.bind(this)} >
+          <span style={artStyle.text}>{title}</span><span className="glyphicon glyphicon-remove" aria-hidden="true" style={artStyle.glyph}></span>
         </button>
-      </div>
-    );
+    )
   }
 }

@@ -10,6 +10,7 @@ export default class Banned extends React.Component {
       this.state = {
         artists: []
       };
+      console.log(this.state.artists);
       chrome.storage.onChanged.addListener(() => {
         this._setStateFromStorage()
       });
@@ -17,7 +18,12 @@ export default class Banned extends React.Component {
 
 
     changeTitle(title) {
-      let newArray = [ ...this.state.artists, title ];
+      let newArray;
+      if(this.state.artists){
+        newArray = [ ...this.state.artists, title ];
+      }else{
+          newArray = [title];
+      }
       chrome.storage.sync.set({"artists": newArray}, function() {
           console.log("Saved a new array item");
       });
@@ -37,6 +43,8 @@ export default class Banned extends React.Component {
     _setStateFromStorage(){
       chrome.storage.sync.get("artists", (data) => {
         if(!data){
+          chrome.storage.sync.set({"artists": []}, function() {
+          });
           console.log("no artists in the list");
         }else{
           let list = data.artists;
@@ -48,17 +56,16 @@ export default class Banned extends React.Component {
     render() {
       this._setStateFromStorage();
       let artistsList = this.state.artists;
-      if (artistsList.length){
+      if (artistsList){
         artistsList = artistsList.map((element, i) => <Artist key={i} title={element} deleteItem={this._deleteItem.bind(this)}/>)
       }
       return (
         <div>
-          <ul>
-            {artistsList}
-          </ul>
-          <Footer changeTitle={this.changeTitle.bind(this)}/>
+            <div className="list-group" role="group" aria-label="...">
+              {artistsList}
+              <Footer className="list-group" changeTitle={this.changeTitle.bind(this)}/>
+          </div>
         </div>
-
       )
     }
 

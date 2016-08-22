@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "youtube ban artists Plugin",
+  "name": "youtube mix ban artists",
   "description": "This extension will ban annoying artists from your playlist",
   "version": "1.0",
 
