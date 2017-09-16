@@ -10,7 +10,8 @@ function banArtists(){
       console.log("no artists in the list");
     }else{
       let list = data.artists;
-      let currentSong = document.getElementById("eow-title");
+      let currentSong = document.getElementsByClassName("title style-scope ytd-video-primary-info-renderer")[0].innerText;
+      //document.getElementById("eow-title");
       checkAndDelete(currentSong,list);
     }
   });
@@ -20,12 +21,12 @@ function checkAndDelete(currentSong, artistList){
   if (!artistList.length){
     return NULL;
   }else{
-    let title = currentSong.getAttribute("title").toLowerCase();
+    let title = currentSong.toLowerCase();
     for(var i=0; i<artistList.length; i++) {
       if(title.includes(artistList[i].toLowerCase())){
         let next = document.getElementsByClassName("ytp-next-button ytp-button")[0];
         next.click();
-        console.log("removed: " + currentSong.getAttribute("title") + "from your playlist")
+        console.log("removed: " + title + "from your playlist")
         return;
       }
     }
